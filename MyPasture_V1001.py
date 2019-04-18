@@ -52,7 +52,7 @@ class caigou:
         print('**********************   欢迎使用JYT牧场记录    *************************')
         print('****************************************************************************')
         try:
-            data=pd.read_Data('Data/mc.xlsx').fillna('')
+            data=pd.read_Data('mc.xlsx').fillna('')
             hms=pd.DataFrame(data.columns,columns=['hm']).applymap(lambda x:'' if 'next' in x or x=='weekday' or x=='date' else x)
             hms=list(hms[hms['hm']!='']['hm'])
         except:
@@ -109,8 +109,8 @@ class caigou:
                     print('---------------------------------------------------')
                     continue
             print('历史记录登记完成')
-            data.to_excel('Data/mc.xlsx')
-        data=pd.read_Data('Data/mc.xlsx').fillna('')
+            data.to_excel('mc.xlsx')
+        data=pd.read_Data('mc.xlsx').fillna('')
         return data,hms
     
     def update(self,data,hms):
@@ -158,7 +158,7 @@ class caigou:
                     dat['value']=x
                     cgdata.append(dat)
         cgdata=pd.concat(cgdata,ignore_index=True)
-        data.to_Data('Data/mc.xlsx')
+        data.to_Data('mc.xlsx')
         return warn,warn2,cgdata
 
     
